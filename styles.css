@@ -26,8 +26,6 @@ html,
 body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
 }
 
 .container {
@@ -36,7 +34,8 @@ body {
   background-size: cover;
   background-position: center center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  min-height: 768px;
 }
 
 @media (min-width: 1990px) {
@@ -181,10 +180,11 @@ body {
   border: none;
   background-color: #40cdff;
   color: #fff;
+  cursor: pointer;
 }
 
-.form_input > button:hover {
-  cursor: pointer;
+.form_input > button.disabled {
+  cursor: not-allowed;
 }
 
 .form_input > button:focus {
@@ -228,4 +228,14 @@ body {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/*# sourceMappingURL=styles.css.map */
+
+.loading-icon {
+  display: none;
+  width: 32px;
+  height: 32px;
+  margin: auto;
+}
+
+.submitBtn-label {
+  display: inline;
+}

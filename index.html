@@ -1,102 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles.css" />
-    <title>Sparkel</title>
-  </head>
 
-  <body>
-    <div class="container">
-      <h1 class="title">Are you ready to reach for the stars?</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Sparkel</title>
+</head>
 
-      <div class="main">
-        <div class="form_header">
-          <div class="form_header_img">
-            <img src="./assests//images/sparkel.png" alt="sprkal_icon" />
-          </div>
-          <p class="form_header_title">
-            Sparkel Embedded Finance is under construction. Be one of the first
-            the register your interest.
-          </p>
+<body>
+  <div class="container">
+    <h1 class="title">Are you ready to reach for the stars?</h1>
+
+    <div class="main">
+      <div class="form_header">
+        <div class="form_header_img">
+          <img src="./assests//images/sparkel.png" alt="sprkal_icon" />
         </div>
-        <form class="form" onsubmit="sendEmail(event)">
-          <div class="form_input">
-            <input
-              id="nameInput"
-              type="text"
-              placeholder="Your name"
-              name="name"
-              required
-            />
-          </div>
-          <div class="form_input">
-            <input
-              id="emailInput"
-              type="email"
-              placeholder="Your primary e-mail address"
-              name="email"
-              required
-            />
-            <button type="submit">I'm in</button>
-          </div>
-        </form>
-        <div class="form_thanksMsg form_header_title">
-          <h3>Thank you!</h3>
-          <p>We will keep you posted with regular updates.</p>
-        </div>
-        <div class="form_brand">
-          <img src="./assests/images/sparkel_text.png" alt="spark_text" />
-        </div>
+        <p class="form_header_title">
+          Sparkel Embedded Finance is under construction. Be one of the first
+          the register your interest.
+        </p>
       </div>
+      <form class="form" onsubmit="sendEmail(event)">
+        <div class="form_input">
+          <input id="nameInput" type="text" placeholder="Your name" name="name" required />
+        </div>
+        <div class="form_input">
+          <input id="emailInput" type="email" placeholder="Your primary e-mail address" name="email" required />
+          <button class="submitBtn" type="submit">
+            <img class="loading-icon" src="./assests/images/loading.svg" alt="Sending email...">
+            <span class="submitBtn-label">I'm in</span>
+          </button>
+        </div>
+      </form>
+      <div class="form_thanksMsg form_header_title">
+        <h3>Thank you!</h3>
+        <p>We will keep you posted with regular updates.</p>
+      </div>
+      <div class="form_brand">
+        <img src="./assests/images/sparkel_text.png" alt="spark_text" />
+      </div>
+    </div>
 
-      <div class="social">
-        <a href="#" class="social_icon">
+    <div class="social">
+      <!-- <a href="#" class="social_icon">
           <img src="./assests/images/twitter_icon.png" alt="twitter_icon" />
         </a>
         <a href="#" class="social_icon">
           <img src="./assests/images/facebook_icon.png" alt="facebook_icon" />
-        </a>
-        <a href="#" class="social_icon">
-          <img src="./assests/images/linkedIn_icon.png" alt="linked_in_icon" />
-        </a>
-      </div>
+        </a> -->
+      <a href="https://www.linkedin.com/company/universal-platform-s-a/about/" target="_blank" class="social_icon">
+        <img src="./assests/images/linkedIn_icon.png" alt="linked_in_icon" />
+      </a>
     </div>
+  </div>
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"
-    ></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
-    <script type="text/javascript">
-      const USER_ID = "user_NYIty8TskyUCnJTLQM5jg";
-      const SERVICE_ID = "service_44x0v8j";
-      const TEMPLATE_ID = "template_0do7z6n";
+  <script type="text/javascript">
+    const USER_ID = "user_NYIty8TskyUCnJTLQM5jg";
+    const SERVICE_ID = "service_rana";
+    const TEMPLATE_ID = "template_rana";
 
-      emailjs.init(USER_ID);
+    emailjs.init(USER_ID);
 
-      const sendEmail = (e) => {
-        e.preventDefault();
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID).then(
-          (result) => {
-            showThanksMsg();
-            hideForm();
-          },
-          (error) => {
-            console.log(error.text);
-          }
-        );
-      };
-      const showThanksMsg = () => {
-        const thanksMsg = document.querySelector(".form_thanksMsg");
-        thanksMsg.style.display = "block";
-      };
+    const sendEmail = (e) => {
+      e.preventDefault();
+      setLoading(true);
+      setShowSubmitBtnLabel(false);
+      setDisabledSubmitBtn(true);
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID).then(
+        (result) => {
+          showThanksMsg();
+          hideForm();
+          setLoading(false);
+          setShowSubmitBtnLabel(true);
+          setDisabledSubmitBtn(false);
+        },
+        (error) => {
+          console.log(error.text);
+          setLoading(false);
+          setShowSubmitBtnLabel(true);
+          setDisabledSubmitBtn(false);
+        }
+      );
+    };
 
-      const hideForm = () => {
-        const form = document.querySelector(".form");
-        form.style.display = "none";
-      };
-    </script>
-  </body>
+    const setLoading = (loading) => {
+      const loadingSvg = document.querySelector('.loading-icon');
+      loadingSvg.style.display = loading ? 'block' : 'none';
+    };
+
+    const setShowSubmitBtnLabel = (show) => {
+      const submitBtnLabel = document.querySelector('.submitBtn-label');
+      submitBtnLabel.style.display = show ? 'inline' : 'none';
+    };
+
+    const setDisabledSubmitBtn = (disabled) => {
+      const submitBtn = document.querySelector('.submitBtn');
+      submitBtn.disabled = disabled;
+      disabled ? submitBtn.classList.add('disabled') : submitBtn.classList.remove('disabled');
+    };
+
+    const showThanksMsg = () => {
+      const thanksMsg = document.querySelector(".form_thanksMsg");
+      thanksMsg.style.display = "block";
+    };
+
+    const hideForm = () => {
+      const form = document.querySelector(".form");
+      form.style.display = "none";
+    };
+  </script>
+</body>
+
 </html>
