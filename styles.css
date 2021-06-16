@@ -62,7 +62,9 @@ body {
     padding-top: 132px;
   }
 }
-
+link {
+  display: initial;
+}
 .form {
   margin: 0 auto;
   width: 577px;
