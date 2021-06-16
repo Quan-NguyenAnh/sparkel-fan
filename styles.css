@@ -69,9 +69,7 @@ link {
   margin: 0 auto;
   width: 577px;
 }
-.form_brand > img {
-  width: 178px;
-}
+
 .form_header {
   display: -webkit-box;
   display: -ms-flexbox;
