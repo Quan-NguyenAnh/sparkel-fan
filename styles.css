@@ -1,16 +1,16 @@
 @font-face {
-  font-family: "Courgette";
-  src: url("./assests/fonts/Courgette-Regular.ttf");
+  font-family: 'Courgette';
+  src: url('./assests/fonts/Courgette-Regular.ttf');
 }
 
 @font-face {
-  font-family: "Open Sans";
-  src: url("./assests/fonts/OpenSans-Light.ttf");
+  font-family: 'Open Sans';
+  src: url('./assests/fonts/OpenSans-Light.ttf');
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url("./assests/fonts/Poppins-Regular.ttf");
+  font-family: 'Poppins';
+  src: url('./assests/fonts/Poppins-Regular.ttf');
 }
 
 html,
@@ -30,7 +30,7 @@ body {
 
 .container {
   position: relative;
-  background: url("./assests/images/background.png") no-repeat;
+  background: url('./assests/images/background.png') no-repeat;
   background-size: cover;
   background-position: center center;
   width: 100%;
@@ -46,7 +46,7 @@ body {
 
 .title {
   text-align: center;
-  font-family: "Courgette";
+  font-family: 'Courgette';
   font-style: normal;
   font-weight: normal;
   font-size: 48px;
@@ -67,7 +67,9 @@ body {
   margin: 0 auto;
   width: 577px;
 }
-
+.form_brand > img {
+  width: 178px;
+}
 .form_header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -92,7 +94,7 @@ body {
 }
 
 .form_header_title {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -135,7 +137,7 @@ body {
 }
 
 .form_input > input::-webkit-input-placeholder {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -143,7 +145,7 @@ body {
 }
 
 .form_input > input:-ms-input-placeholder {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -151,7 +153,7 @@ body {
 }
 
 .form_input > input::-ms-input-placeholder {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -159,7 +161,7 @@ body {
 }
 
 .form_input > input::placeholder {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -167,7 +169,7 @@ body {
 }
 
 .form_input > button {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
